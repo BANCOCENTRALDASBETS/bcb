@@ -18,6 +18,7 @@
     <link href="css/mobile.css" rel="stylesheet" media="(max-width: 767px)" />
     <link href="css/tablet.css" rel="stylesheet" media="(min-width: 768px) and (max-width: 1199px)" />
     <link href="css/desktop.css" rel="stylesheet" media="(min-width: 1200px)" />
+    <link href="css/carrousel_css.css" rel="stylesheet" />
 
     <style>
         /* Estilo básico */
@@ -94,6 +95,35 @@
                 background-image: url('imagens/background2-mobile.webp');
             }
         }
+
+        /* Estilos do Carrossel */
+        .carousel-container {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel img {
+            width: 250px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.1);
+        }
     </style>
 
 </head>
@@ -112,6 +142,37 @@
                 </div>
             </div>
 
+            <!-- Carrossel de Imagens -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <img src="imagens/1icescape.webp" alt="The Great Icescape">
+                    <img src="imagens/2pandago.webp" alt="Go High Panda">
+                    <img src="imagens/3capitainsrou.webp" alt="Captain's Bounty">
+                    <img src="imagens/4wildband.webp" alt="Wild Bandito">
+                    <img src="imagens/5hotslot.webp" alt="Hot Slot">
+                    <img src="imagens/7aztecg.webp" alt="Aztec Gems Megaways">
+                    <img src="imagens/10aviator.webp" alt="Aviator">
+                    <img src="imagens/11ronaldi.webp" alt="Ronaldinho Spins">
+                    <img src="imagens/12showd.webp" alt="Wild West Showdown">
+                    <img src="imagens/15princes.webp" alt="Starlight Princess">
+                    <img src="imagens/17ganesha.webp" alt="Ganesha Gold">
+                    <img src="imagens/20veioraio.webp" alt="Gates of Olympus 1000">
+                    <img src="imagens/21veioraio.webp" alt="Gates of Olympus Super Scatter">
+                    <img src="imagens/22veioraio.webp" alt="Gates of Olympus">
+                    <img src="imagens/23sugarr.webp" alt="Sugar Rush 1000">
+                    <img src="imagens/24sweetb.webp" alt="Sweet Bonanza 1000">
+                    <img src="imagens/25sweetb.webp" alt="Sweet Bonanza">
+                    <img src="imagens/1000rato.webp" alt="Fortune Mouse">
+                    <img src="imagens/1001tigre.webp" alt="Fortune Tiger">
+                    <img src="imagens/1002rabbit.webp" alt="Fortune Rabbit">
+                    <img src="imagens/1003dragao.webp" alt="Fortune Dragon">
+                    <img src="imagens/1006fortune.webp" alt="Fortune Ox">
+                    <img src="imagens/bigbass1.webp" alt="Big Bass Splash">
+                    <img src="imagens/bigbassb.webp" alt="Big Bass Bonanza">
+                    <img src="imagens/demigodsv.webp" alt="Demi Gods V">
+                    <img src="imagens/spaceman.webp" alt="Spaceman">
+                </div>
+            </div>
         </main>
     </div>
 
