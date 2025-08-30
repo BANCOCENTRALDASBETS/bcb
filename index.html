@@ -38,12 +38,20 @@
             background: linear-gradient(180deg, rgba(0, 0, 0, .22) 0%, rgba(0, 0, 0, .35) 40%, rgba(0, 0, 0, .55) 100%);
         }
 
-        @media (min-width: 768px) { body { background-image: url('imagens/background2-tablet.webp'); } }
-        @media (min-width: 1200px) { body { background-image: url('imagens/background2-desktop.webp'); } }
+        @media (min-width: 768px) { 
+            body { 
+                background-image: url('imagens/background2-tablet.webp'); 
+            }
+        }
+        @media (min-width: 1200px) { 
+            body { 
+                background-image: url('imagens/background2-desktop.webp'); 
+            }
+        }
 
         /* Logo topo */
         .logo-top { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 10; }
-        .logo-top img { display: block; }
+        .logo-top img { display: block; width: 100%; max-width: 700px; height: auto; }
 
         /* ======= Bloco de Botões (Entrar e Cadastro) ======= */
         .wrap {
@@ -134,7 +142,7 @@
     <div class="page-wrapper">
         <main>
             <!-- Logo e Vídeo -->
-            <div class="logo-top"><img src="imagens/slogan-index.webp" alt="Banco Central das Bets" /></div>
+            <div class="logo-top"><img src="imagens/logo-desktop.png" alt="Banco Central das Bets" /></div>
 
             <!-- Caixa de Botões -->
             <div class="wrap">
