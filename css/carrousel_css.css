@@ -16,7 +16,7 @@
 }
 
 .carousel img {
-    width: 250px;
+    width: 250px;  /* Para desktop */
     height: 140px;
     object-fit: cover;
     border-radius: 8px;
@@ -25,4 +25,24 @@
 
 .carousel img:hover {
     transform: scale(1.1);
+}
+
+/* Responsividade para Tablets */
+@media (max-width: 1199px) {
+    .carousel img {
+        width: 200px;  /* Ajusta as imagens para tablets */
+        height: 120px;
+    }
+}
+
+/* Responsividade para Móveis */
+@media (max-width: 767px) {
+    .carousel img {
+        width: 150px;  /* Ajusta as imagens para dispositivos móveis */
+        height: 100px;
+    }
+
+    .carousel {
+        gap: 10px;  /* Reduz o espaçamento entre as imagens no celular */
+    }
 }
