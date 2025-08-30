@@ -6,14 +6,14 @@
     <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
     <title>Portal — Banco Central das Bets</title>
     <meta content="Portal de entrada — Entrar e Cadastro com validações, captcha e UX premium." name="description"/>
-
+    
     <!-- Favicons -->
     <link href="imagens/favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="imagens/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
     <link href="imagens/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
     <link href="imagens/favicon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
     <link href="imagens/favicon-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
-
+    
     <style>
         /* Estilo básico */
         :root {
@@ -32,7 +32,7 @@
         }
 
         .logo-top img { display: block; width: 100%; max-width: 700px; height: auto; }
-
+        
         /* ======= Caixa de Botões ======= */
         .wrap {
             position: relative; left: 50%; transform: translateX(-50%);
@@ -49,7 +49,7 @@
 
         .row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
 
-        /* Botões */
+        /* Botões (Cadastro e Entrar) */
         .btn-sm {
             padding: 10px 15px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 900;
             text-transform: uppercase; letter-spacing: .35px; flex: 1 1 140px;
@@ -65,63 +65,26 @@
 
         .btn-sm:disabled { opacity: .55; cursor: not-allowed; filter: grayscale(.1); }
 
-        /* ======= Botões Cadastro e Entrar ======= */
-        <button class="btn-sm sm-blue" id="btnOpenReg">Cadastro</button>
-        <button class="btn-sm sm-green" id="btnOpenLogin">Entrar</button>
+        /* ======= Layout Responsivo para Desktop: Botões ao lado ======= */
+        @media (min-width: 1200px) {
+            .row {
+                justify-content: center;
+                flex-wrap: nowrap;  /* Botões lado a lado no desktop */
+            }
+        }
 
-        <div class="hint">
-            Entre ou Faça seu Cadastro para Participar dos Sorteios de Banca e Promoções
-        </div>
-
-        <!-- ======= Modal de Login ======= -->
-        <div aria-hidden="true" aria-modal="true" class="overlay" id="loginOverlay" role="dialog">
-            <div class="modal" id="loginModal">
-                <h2 class="title">Entrar</h2>
-                <p class="subtitle">ainda não tem conta? <a href="#" id="loginGoReg">Criar</a></p>
-                <!-- Campos de Login -->
-                <div class="field">
-                    <input type="text" id="loginTel" placeholder="Telefone" />
-                </div>
-                <div class="field">
-                    <input type="password" id="loginPass" placeholder="Senha" />
-                </div>
-                <div class="actions">
-                    <button class="btn-sm sm-green" id="btnDoLogin">Entrar</button>
-                    <button class="btn-sm sm-red" id="btnLoginClose">Fechar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ======= Modal de Cadastro ======= -->
-        <div aria-hidden="true" aria-modal="true" class="overlay" id="regOverlay" role="dialog">
-            <div class="modal" id="regModal">
-                <h2 class="title">Cadastro</h2>
-                <p class="subtitle">já tem uma conta? <a href="#" id="regGoLogin">Entrar</a></p>
-                <!-- Campos de Cadastro -->
-                <div class="field">
-                    <input type="tel" id="regTel" placeholder="Telefone" />
-                </div>
-                <div class="field">
-                    <input type="password" id="regPass" placeholder="Senha" />
-                </div>
-                <div class="field">
-                    <input type="password" id="regPass2" placeholder="Confirmar Senha" />
-                </div>
-                <div class="actions">
-                    <button class="btn-sm sm-blue" id="btnRegistrar">Registrar</button>
-                    <button class="btn-sm sm-red" id="btnRegClose">Fechar</button>
-                </div>
-            </div>
-        </div>
-
+        /* ======= Modais (Cadastro e Entrar) ======= */
+        .overlay { display: none; position: fixed; inset: 0; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.7); }
+        .modal-content { background: #fff; padding: 20px; border-radius: 10px; width: 300px; text-align: center; }
+        button { padding: 10px; margin-top: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
     </style>
-
 </head>
 <body>
 
     <div class="page-wrapper">
         <main>
-            <!-- Caixa de Botões -->
+            <!-- Caixa de Botões (Cadastro e Entrar) -->
             <div class="wrap">
                 <div class="hero">
                     <div class="row">
@@ -132,18 +95,55 @@
                 </div>
             </div>
 
+            <!-- Modal de Login -->
+            <div id="loginOverlay" class="overlay">
+                <div class="modal-content">
+                    <h2>Entrar</h2>
+                    <form id="loginForm">
+                        <input type="text" placeholder="Telefone" id="loginTel" required />
+                        <input type="password" placeholder="Senha" id="loginPass" required />
+                        <button type="submit">Entrar</button>
+                    </form>
+                    <button onclick="closeModal('loginOverlay')">Fechar</button>
+                </div>
+            </div>
+
+            <!-- Modal de Cadastro -->
+            <div id="regOverlay" class="overlay">
+                <div class="modal-content">
+                    <h2>Cadastro</h2>
+                    <form id="regForm">
+                        <input type="text" placeholder="Telefone" id="regTel" required />
+                        <input type="password" placeholder="Senha" id="regPass" required />
+                        <input type="password" placeholder="Confirmar Senha" id="regPass2" required />
+                        <button type="submit">Registrar</button>
+                    </form>
+                    <button onclick="closeModal('regOverlay')">Fechar</button>
+                </div>
+            </div>
+
         </main>
     </div>
 
     <script>
-        // Scripts para abertura dos modais
-        document.getElementById('btnOpenLogin').addEventListener('click', () => openLogin());
-        document.getElementById('btnOpenReg').addEventListener('click', () => openReg());
-
         // Funções para abrir os modais
-        function openLogin() { document.getElementById('loginOverlay').style.display = 'block'; }
-        function openReg() { document.getElementById('regOverlay').style.display = 'block'; }
-    </script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
 
+        // Funções para fechar os modais
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Ações dos botões
+        document.getElementById('btnOpenLogin').addEventListener('click', function() {
+            openModal('loginOverlay');
+        });
+
+        document.getElementById('btnOpenReg').addEventListener('click', function() {
+            openModal('regOverlay');
+        });
+    </script>
 </body>
 </html>
