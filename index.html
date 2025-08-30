@@ -6,14 +6,14 @@
     <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
     <title>Portal — Banco Central das Bets</title>
     <meta content="Portal de entrada — Entrar e Cadastro com validações, captcha e UX premium." name="description"/>
-
+    
     <!-- Favicons -->
     <link href="imagens/favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="imagens/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
     <link href="imagens/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
     <link href="imagens/favicon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
     <link href="imagens/favicon-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
-
+    
     <style>
         /* Estilo básico */
         :root {
@@ -32,7 +32,7 @@
         }
 
         .logo-top img { display: block; width: 100%; max-width: 700px; height: auto; }
-
+        
         /* ======= Caixa de Botões ======= */
         .wrap {
             position: fixed; left: 50%; transform: translateX(-50%);
@@ -67,12 +67,28 @@
 
         /* ======= Layout Responsivo para Desktop: Botões ao lado ======= */
         @media (min-width: 1200px) {
+            body {
+                background-image: url('imagens/background2-desktop.webp');
+            }
             .row {
                 justify-content: center;
                 flex-wrap: nowrap;  /* Botões lado a lado no desktop */
             }
         }
 
+        /* ======= Layout Responsivo para Tablet: Background de tablet ======= */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            body {
+                background-image: url('imagens/background2-tablet.webp');
+            }
+        }
+
+        /* ======= Layout Responsivo para Mobile: Background de mobile ======= */
+        @media (max-width: 767px) {
+            body {
+                background-image: url('imagens/background2-mobile.webp');
+            }
+        }
     </style>
 
 </head>
