@@ -1,0 +1,22 @@
+
+/* Estilos para desktops (telas grandes) */
+body {
+    background-color: #10204a;
+    font-size: 18px;
+    text-align: left;
+}
+
+.hero {
+    padding: 50px;
+}
+
+.wrap {
+    width: 70vw;
+    bottom: 50px;
+}
+
+.btn-sm {
+    width: 48%;
+    font-size: 1.5rem;
+    padding: 16px;
+}

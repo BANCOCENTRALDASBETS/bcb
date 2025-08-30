@@ -1,0 +1,22 @@
+
+/* Estilos para tablets (telas médias) */
+body {
+    background-color: #1c2b44;
+    font-size: 16px;
+    text-align: left;
+}
+
+.hero {
+    padding: 30px;
+}
+
+.wrap {
+    width: 80vw;
+    bottom: 30px;
+}
+
+.btn-sm {
+    width: 48%;
+    font-size: 1.2rem;
+    padding: 14px;
+}
