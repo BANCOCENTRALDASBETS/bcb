@@ -35,8 +35,8 @@
 
         /* ======= Caixa de Botões ======= */
         .wrap {
-            position: relative; left: 50%; transform: translateX(-50%);
-            bottom: 120px;
+            position: fixed; left: 50%; transform: translateX(-50%);
+            bottom: 40px;
             width: min(720px, 94vw); z-index: 2;
         }
 
@@ -88,33 +88,6 @@
                         <button class="btn-sm sm-green" id="btnOpenLogin">Entrar</button>
                     </div>
                     <div class="hint">Entre ou Faça seu Cadastro para Participar dos Sorteios de Banca e Promoções</div>
-                </div>
-            </div>
-
-            <!-- Modal de Login -->
-            <div id="loginOverlay" class="overlay">
-                <div class="modal-content">
-                    <h2>Entrar</h2>
-                    <form id="loginForm">
-                        <input type="text" placeholder="Telefone" id="loginTel" required />
-                        <input type="password" placeholder="Senha" id="loginPass" required />
-                        <button type="submit">Entrar</button>
-                    </form>
-                    <button onclick="closeModal('loginOverlay')">Fechar</button>
-                </div>
-            </div>
-
-            <!-- Modal de Cadastro -->
-            <div id="regOverlay" class="overlay">
-                <div class="modal-content">
-                    <h2>Cadastro</h2>
-                    <form id="regForm">
-                        <input type="text" placeholder="Telefone" id="regTel" required />
-                        <input type="password" placeholder="Senha" id="regPass" required />
-                        <input type="password" placeholder="Confirmar Senha" id="regPass2" required />
-                        <button type="submit">Registrar</button>
-                    </form>
-                    <button onclick="closeModal('regOverlay')">Fechar</button>
                 </div>
             </div>
 
