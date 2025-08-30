@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Banco Central das Bets
 
 Projeto para centralizar informações sobre plataformas de apostas, bônus e promoções.
@@ -19,3 +20,7 @@ O objetivo do projeto é fornecer uma plataforma confiável que centralize todas
 3. Faça commit das suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
 4. Envie a branch para o repositório remoto (`git push origin feature/nova-funcionalidade`).
 5. Abra um pull request.
+=======
+# bcb
+Bets Com Bonus
+>>>>>>> 89106f9019794cc6f319ed5e6f49a8ce70c3d2f5
