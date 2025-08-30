@@ -15,9 +15,16 @@
     <link href="imagens/favicon-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
 
     <style>
-        /* CSS básico para os favicons */
+        /* Estilo básico */
+        :root {
+            --fg: #e7eef7; --muted: #c6cde0;
+            --neon-green: #1fe3a3; --neon-green-2: #13c6b3; /* Entrar */
+            --neon-blue: #82b6ff; --neon-blue-2: #2e71ff; /* Cadastro */
+            --glow: 0 0 12px rgba(122, 230, 255, .45), 0 0 28px rgba(25, 224, 122, .25);
+        }
+
         * { box-sizing: border-box; }
-        html, body { height: 100%; margin: 0; color: #e7eef7; font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+        html, body { height: 100%; margin: 0; color: var(--fg); font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
         body {
             background-color: #0c0e2b;
             text-align: center;
@@ -25,19 +32,90 @@
         }
 
         .logo-top img { display: block; width: 100%; max-width: 700px; height: auto; }
-        .hint {
-            color: #fff;
-            margin-top: 20px;
-        }
-        .btn-sm {
-            padding: 10px 15px; border-radius: 5px; background-color: #1fe3a3; color: white; border: none;
-            cursor: pointer; font-size: 16px; text-transform: uppercase;
+
+        /* ======= Caixa de Botões ======= */
+        .wrap {
+            position: relative; left: 50%; transform: translateX(-50%);
+            bottom: 120px;
+            width: min(720px, 94vw); z-index: 2;
         }
 
-        .btn-sm:hover {
-            background-color: #13c6b3;
+        .hero {
+            background: linear-gradient(180deg, #0c0e2b, #0b0c25);
+            border: 1px solid #2f336e; border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
+            padding: 18px; text-align: center;
         }
+
+        .row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
+
+        /* Botões */
+        .btn-sm {
+            padding: 10px 15px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 900;
+            text-transform: uppercase; letter-spacing: .35px; flex: 1 1 140px;
+            display: inline-flex; align-items: center; justify-content: center; font-size: .92rem;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, .28), 0 20px 40px rgba(0, 0, 0, .35);
+            transition: box-shadow .15s ease, filter .15s ease, transform .08s ease;
+        }
+
+        .btn-sm:active { transform: translateY(2px); }
+        .btn-sm.glow { box-shadow: var(--glow), 0 10px 0 rgba(0, 0, 0, .28), 0 20px 40px rgba(0, 0, 0, .35); }
+        .sm-green { background: linear-gradient(180deg, var(--neon-green), var(--neon-green-2)); color: #062a28; border: 1px solid rgba(32, 255, 208, .25); }
+        .sm-blue { background: linear-gradient(180deg, var(--neon-blue), var(--neon-blue-2)); color: #06142b; border: 1px solid rgba(130, 182, 255, .35); }
+
+        .btn-sm:disabled { opacity: .55; cursor: not-allowed; filter: grayscale(.1); }
+
+        /* ======= Botões Cadastro e Entrar ======= */
+        <button class="btn-sm sm-blue" id="btnOpenReg">Cadastro</button>
+        <button class="btn-sm sm-green" id="btnOpenLogin">Entrar</button>
+
+        <div class="hint">
+            Entre ou Faça seu Cadastro para Participar dos Sorteios de Banca e Promoções
+        </div>
+
+        <!-- ======= Modal de Login ======= -->
+        <div aria-hidden="true" aria-modal="true" class="overlay" id="loginOverlay" role="dialog">
+            <div class="modal" id="loginModal">
+                <h2 class="title">Entrar</h2>
+                <p class="subtitle">ainda não tem conta? <a href="#" id="loginGoReg">Criar</a></p>
+                <!-- Campos de Login -->
+                <div class="field">
+                    <input type="text" id="loginTel" placeholder="Telefone" />
+                </div>
+                <div class="field">
+                    <input type="password" id="loginPass" placeholder="Senha" />
+                </div>
+                <div class="actions">
+                    <button class="btn-sm sm-green" id="btnDoLogin">Entrar</button>
+                    <button class="btn-sm sm-red" id="btnLoginClose">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= Modal de Cadastro ======= -->
+        <div aria-hidden="true" aria-modal="true" class="overlay" id="regOverlay" role="dialog">
+            <div class="modal" id="regModal">
+                <h2 class="title">Cadastro</h2>
+                <p class="subtitle">já tem uma conta? <a href="#" id="regGoLogin">Entrar</a></p>
+                <!-- Campos de Cadastro -->
+                <div class="field">
+                    <input type="tel" id="regTel" placeholder="Telefone" />
+                </div>
+                <div class="field">
+                    <input type="password" id="regPass" placeholder="Senha" />
+                </div>
+                <div class="field">
+                    <input type="password" id="regPass2" placeholder="Confirmar Senha" />
+                </div>
+                <div class="actions">
+                    <button class="btn-sm sm-blue" id="btnRegistrar">Registrar</button>
+                    <button class="btn-sm sm-red" id="btnRegClose">Fechar</button>
+                </div>
+            </div>
+        </div>
+
     </style>
+
 </head>
 <body>
 
@@ -46,13 +124,26 @@
             <!-- Caixa de Botões -->
             <div class="wrap">
                 <div class="hero">
-                    <button class="btn-sm">Cadastro</button>
-                    <button class="btn-sm">Entrar</button>
+                    <div class="row">
+                        <button class="btn-sm sm-blue" id="btnOpenReg">Cadastro</button>
+                        <button class="btn-sm sm-green" id="btnOpenLogin">Entrar</button>
+                    </div>
+                    <div class="hint">Entre ou Faça seu Cadastro para Participar dos Sorteios de Banca e Promoções</div>
                 </div>
-                <div class="hint">Entre ou Faça seu Cadastro para Participar dos Sorteios de Banca e Promoções</div>
             </div>
+
         </main>
     </div>
+
+    <script>
+        // Scripts para abertura dos modais
+        document.getElementById('btnOpenLogin').addEventListener('click', () => openLogin());
+        document.getElementById('btnOpenReg').addEventListener('click', () => openReg());
+
+        // Funções para abrir os modais
+        function openLogin() { document.getElementById('loginOverlay').style.display = 'block'; }
+        function openReg() { document.getElementById('regOverlay').style.display = 'block'; }
+    </script>
 
 </body>
 </html>
